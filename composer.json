@@ -12,7 +12,7 @@
   "autoload": {
     "files": [ "includes.php" ],
     "psr-4": {
-      "Virteom\\ApiClient\\Php\\": "/"
+      "BumperLane\\Api\\ClientModule\\": "/"
     }
   }
 }
