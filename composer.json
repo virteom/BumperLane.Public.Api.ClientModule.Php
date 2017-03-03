@@ -10,8 +10,7 @@
     "virteom/bumperlane.public.api.client": "dev-master"
   },
   "autoload": {
-    "files": [ "includes.php" ],
-    "psr-4": {
+    "psr-7": {
       "BumperLane\\Api\\ClientModule\\": "/"
     }
   }
