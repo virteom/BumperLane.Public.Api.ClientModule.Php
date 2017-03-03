@@ -9,7 +9,7 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "virteom/bumperlane.public.api.client": "0.1.*"
+    "virteom/bumperlane.public.api.client": "^0.1"
   },
   "autoload": {
     "psr-4": {
