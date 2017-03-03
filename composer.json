@@ -17,10 +17,5 @@
   },
   "suggest": {
     "virteom/bumperlane.public.api.client": "Required for using the the BumperLane Api Client"
-  },
-   "extra": {
-        "branch-alias": {
-            "dev-master": "6.2-dev"
-        }
-    }
+  }
 }
