@@ -6,6 +6,8 @@
   "homepage": "https://github.com/virteom/BumperLane.Public.Api.ClientModule.Php",
   "description": "BumperLane API ClientModule Library (should be used in conjunction with the BumperLane API Client Library)",
   "license": "MIT",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "require": {
     "virteom/bumperlane.public.api.client": "0.1.*"
   },
