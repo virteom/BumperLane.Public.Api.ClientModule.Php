@@ -1,6 +1,5 @@
 {
   "name": "virteom/bumperlane.public.api.clientmodule",
-  "version": "0.1.5.0",
   "type": "library",
   "keywords": [ "api", "odata", "microservice", "service", "oauth", "virteom", "bumperlane", "clientmodule" ],
   "homepage": "https://github.com/virteom/BumperLane.Public.Api.ClientModule.Php",
@@ -9,11 +8,19 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "virteom/bumperlane.public.api.client": "^0.1"
+    "virteom/bumperlane.public.api.client": "^1.0"
   },
   "autoload": {
     "psr-4": {
       "BumperLane\\Api\\ClientModule\\": "/"
     }
-  }
+  },
+  "suggest": {
+    "virteom/bumperlane.public.api.client": "Required for using the the BumperLane Api Client"
+  },
+   "extra": {
+        "branch-alias": {
+            "dev-master": "6.2-dev"
+        }
+    }
 }
