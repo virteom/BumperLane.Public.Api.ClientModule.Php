@@ -7,7 +7,7 @@
   "description": "BumperLane API ClientModule Library (should be used in conjunction with the BumperLane API Client Library)",
   "license": "MIT",
   "require": {
-    "virteom/bumperlane.public.api.client": "dev-master"
+    "virteom/bumperlane.public.api.client": "0.1.*"
   },
   "autoload": {
     "psr-4": {
