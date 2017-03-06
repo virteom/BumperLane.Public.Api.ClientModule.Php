@@ -26,10 +26,10 @@ class Email {
         foreach($this->To as $recipient){
             $request = $this->api->BuildRequest(Email::API_PATH_FUNCTION_EMAIL);
             $data = array(
-                API_KEY_SUBJECT     => $this->Subject,
-                API_KEY_TO          => $recipient,
-                API_KEY_FROM        => $this->From,
-                API_KEY_HTML_BODY   => $this->HtmlBody
+                Email::API_KEY_SUBJECT     => $this->Subject,
+                Email::API_KEY_TO          => $recipient,
+                Email::API_KEY_FROM        => $this->From,
+                Email::API_KEY_HTML_BODY   => $this->HtmlBody
             );
            
             $json = json_encode($data);
