@@ -1,7 +1,13 @@
 <?php
 namespace BumperLane\Api\ClientModule\Send;
 class Email {
-    const RESPONSE_VALUE_KEY = 'value';
+    const RESPONSE_KEY_VALUE = 'value';
+    const RESPONSE_VALUE_FAILED = 'Failed';
+    const API_PATH_FUNCTION_EMAIL = 'ApplicationsApplicationDetail/API.Core.V2.API.Applications.Email';
+    const API_KEY_SUBJECT = 'Subject';
+    const API_KEY_TO = 'To';
+    const API_KEY_FROM = 'From';
+    const API_KEY_HTML_BODY = 'Body';
 
     public $HtmlBody = null;
     public $TextBody = null;
@@ -16,27 +22,30 @@ class Email {
     }
 
     public function Send(){
+        $responses = array();
         foreach($this->To as $recipient){
-            $this->api->BuildRequest("ApplicationsApplicationDetail/API.Core.V2.API.Applications.Email");
+            $request = $this->api->BuildRequest(API_PATH_FUNCTION_EMAIL);
             $data = array(
-                "Subject" => $this->Subject,
-                "To" => $recipient,
-                "From" => $this->From,
-                "Body" => $this->HtmlBody
+                API_KEY_SUBJECT     => $this->Subject,
+                API_KEY_TO          => $recipient,
+                API_KEY_FROM        => $this->From,
+                API_KEY_HTML_BODY   => $this->HtmlBody
             );
            
             $json = json_encode($data);
             $responseJson = $request->Post($json);
             if($responseJson == null){
-                return "Failed";
+                $responses[] = RESPONSE_VALUE_FAILED;
             }
 
             $response = json_decode($responseJson, true);
-            if($response == null || !array_key_exists(RESPONSE_VALUE_KEY, $response)){
-                return "Failed";
+            if($response == null || !array_key_exists(RESPONSE_KEY_VALUE, $response)){
+                $responses[] = RESPONSE_VALUE_FAILED;
             }
 
-            return $response[RESPONSE_VALUE_KEY];
+            $responses[] = $response[RESPONSE_KEY_VALUE];
         }
+
+        return $responses;
     }
 }
