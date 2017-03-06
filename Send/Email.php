@@ -17,7 +17,7 @@ class Email {
     public $Priority = null;
     private $api = null;
     
-    public function __construct($clientId = Email::MODERN_API_CLIENT_ID, $clientSecret = Email::MODERN_API_CLIENT_SECRET, $baseUrl = Email::MODERN_API_SITE_URL){
+    public function __construct($clientId = MODERN_API_CLIENT_ID, $clientSecret = MODERN_API_CLIENT_SECRET, $baseUrl = MODERN_API_SITE_URL){
         $this->api = \BumperLane\Api\Client\ApiClient::Create(\BumperLane\Api\ClientModule\CoreV2::class, $clientId, $clientSecret, $baseUrl);
     }
 
