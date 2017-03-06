@@ -17,14 +17,14 @@ class Email {
     public $Priority = null;
     private $api = null;
     
-    public function __construct($clientId = MODERN_API_CLIENT_ID, $clientSecret = MODERN_API_CLIENT_SECRET, $baseUrl = MODERN_API_SITE_URL){
+    public function __construct($clientId = Email::MODERN_API_CLIENT_ID, $clientSecret = Email::MODERN_API_CLIENT_SECRET, $baseUrl = Email::MODERN_API_SITE_URL){
         $this->api = \BumperLane\Api\Client\ApiClient::Create(\BumperLane\Api\ClientModule\CoreV2::class, $clientId, $clientSecret, $baseUrl);
     }
 
     public function Send(){
         $responses = array();
         foreach($this->To as $recipient){
-            $request = $this->api->BuildRequest(API_PATH_FUNCTION_EMAIL);
+            $request = $this->api->BuildRequest(Email::API_PATH_FUNCTION_EMAIL);
             $data = array(
                 API_KEY_SUBJECT     => $this->Subject,
                 API_KEY_TO          => $recipient,
@@ -35,15 +35,15 @@ class Email {
             $json = json_encode($data);
             $responseJson = $request->Post($json);
             if($responseJson == null){
-                $responses[] = RESPONSE_VALUE_FAILED;
+                $responses[] = Email::RESPONSE_VALUE_FAILED;
             }
 
             $response = json_decode($responseJson, true);
-            if($response == null || !array_key_exists(RESPONSE_KEY_VALUE, $response)){
-                $responses[] = RESPONSE_VALUE_FAILED;
+            if($response == null || !array_key_exists(Email::RESPONSE_KEY_VALUE, $response)){
+                $responses[] = Email::RESPONSE_VALUE_FAILED;
             }
 
-            $responses[] = $response[RESPONSE_KEY_VALUE];
+            $responses[] = $response[Email::RESPONSE_KEY_VALUE];
         }
 
         return $responses;
