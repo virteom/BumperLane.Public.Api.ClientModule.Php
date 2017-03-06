@@ -33,12 +33,23 @@ class Email {
             );
            
             $json = json_encode($data);
-            $response = $request->Post($json);
-            if($response == null || !array_key_exists(Email::RESPONSE_KEY_VALUE, $response)){
+            $responseObject = $request->Post($json);
+            if($responseObject == null){
                 $responses[] = Email::RESPONSE_VALUE_FAILED;
             }
 
-            $responses[] = $response[Email::RESPONSE_KEY_VALUE];
+            $responseJson = $responseObject->getBody();
+            if($responseJson == null){
+                $responses[] = Email::RESPONSE_VALUE_FAILED;
+            }
+            
+            $response = json_decode($responseJson, true);
+            if($response == null || !array_key_exists(Email::RESPONSE_KEY_VALUE, $response)){
+                $responses[] = Email::RESPONSE_VALUE_FAILED;
+            }
+            else {
+                $responses[] = $response[Email::RESPONSE_KEY_VALUE];
+            }
         }
 
         return $responses;
