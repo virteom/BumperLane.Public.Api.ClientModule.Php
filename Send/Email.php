@@ -33,12 +33,7 @@ class Email {
             );
            
             $json = json_encode($data);
-            $responseJson = $request->Post($json);
-            if($responseJson == null){
-                $responses[] = Email::RESPONSE_VALUE_FAILED;
-            }
-
-            $response = json_decode($responseJson, true);
+            $response = $request->Post($json);
             if($response == null || !array_key_exists(Email::RESPONSE_KEY_VALUE, $response)){
                 $responses[] = Email::RESPONSE_VALUE_FAILED;
             }
