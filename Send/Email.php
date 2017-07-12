@@ -4,7 +4,7 @@ namespace BumperLane\Api\ClientModule\Send;
 class Email {
     const RESPONSE_KEY_VALUE = 'value';
     const RESPONSE_VALUE_FAILED = 'Failed';
-    const API_PATH_FUNCTION_EMAIL = 'ApplicationsApplicationDetail/BumperLane.Hosted.Api.V2.Application.API.Applications.Email';
+    const API_PATH_FUNCTION_EMAIL = 'ApplicationsApplicationDetail/Core.Email';
     const API_KEY_SUBJECT = 'Subject';
     const API_KEY_TO = 'To';
     const API_KEY_FROM = 'From';
